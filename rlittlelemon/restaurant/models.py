@@ -8,7 +8,7 @@ class Menu(models.Model):
     Inventory = models.IntegerField()
 
     def __str__(self):
-        return f'{self.Title} - {self.Price}'
+        return f'{self.Title} : {str(self.Price)}'
     
 class Booking(models.Model):
     Name = models.CharField(max_length=100)
@@ -17,4 +17,4 @@ class Booking(models.Model):
     BookingTime = models.TimeField()
 
     def __str__(self):
-        return f'{self.Name} - {self.Date} at {self.Time}'
+        return f'{self.Name} - {self.Date}'
