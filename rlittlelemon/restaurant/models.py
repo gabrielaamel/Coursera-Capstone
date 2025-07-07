@@ -7,6 +7,10 @@ class Menu(models.Model):
     Price = models.DecimalField(max_digits=6, decimal_places=2)
     Inventory = models.IntegerField()
 
+class Meta:
+    verbose_name = 'Menu'
+    verbose_name_plural = 'Menu Items'
+
     def __str__(self):
         return f'{self.Title} : {str(self.Price)}'
     
@@ -17,4 +21,4 @@ class Booking(models.Model):
     BookingTime = models.TimeField()
 
     def __str__(self):
-        return f'{self.Name} - {self.Date}'
+        return f'{self.Name}for{self.NO_of_guests} guest om {self.BookingDate} at {self.BookingTime}'

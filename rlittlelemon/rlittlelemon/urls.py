@@ -16,16 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from restaurant import views  # Import views from the restaurant app
+#from rest_framework.routers import DefaultRouter
+#from restaurant import views  # Import views from the restaurant app
 
-  # Register the BookingViewSet with the router
-router= DefaultRouter()
-router.register(r'tables', views.BookingViewSet )
+from rest_framework.authtoken.views import obtain_auth_token
+# Register the BookingViewSet with the router
+
+#router= DefaultRouter()
+#router.register(r'tables', views.BookingViewSet )
+
 # The router will automatically create the necessary routes for the BookingViewSet
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('restaurant/menu/', include('restaurant.urls')),
+    path('api/', include('restaurant.urls')),
     path('', include('restaurant.urls')),
-    path('restaurant/booking/', include(router.urls)),
+    #path('restaurant/booking/', include(router.urls)),
+    path('auth/', include('djoser.urls')),  # Include Djoser's authentication URLs
+    path('auth/', include('djoser.urls.authtoken')),  # Include Djoser's token authentication URLs
+    
+
 ]

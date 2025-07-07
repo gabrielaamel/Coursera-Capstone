@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import Menu, Booking
 
 
@@ -13,7 +14,7 @@ from .models import Menu, Booking
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ' __al__ '  # '__all__' includes all fields in the model
+        fields = ['id','Title','Price','Inventory'] # includes all fields in the model
 
 
 class BookingSerializer(serializers.ModelSerializer):
@@ -21,3 +22,12 @@ class BookingSerializer(serializers.ModelSerializer):
         model = Booking
         fields = '__all__'  # '__all__' includes all fields in the model
 
+class GroupNameField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'groups']  # Include the groups field to show group names
+        
