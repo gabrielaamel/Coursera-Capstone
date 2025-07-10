@@ -31,7 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('restaurant.urls')),
     path('', include('restaurant.urls')),
-    #path('restaurant/booking/', include(router.urls)),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # URL for obtaining auth token
+    
     path('auth/', include('djoser.urls')),  # Include Djoser's authentication URLs
     path('auth/', include('djoser.urls.authtoken')),  # Include Djoser's token authentication URLs
     
