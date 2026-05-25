@@ -27,7 +27,8 @@ class GroupNameField(serializers.RelatedField):
         return value.name
 
 class UserSerializer(serializers.ModelSerializer):
+    groups = GroupNameField(many=True, read_only=True)  # Use the custom field to show group names
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'groups']  # Include the groups field to show group names
-        
+
