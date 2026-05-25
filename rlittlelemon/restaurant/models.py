@@ -4,6 +4,7 @@ class Menu(models.Model):
     Title = models.CharField(max_length=100)
     Price = models.DecimalField(max_digits=6, decimal_places=2)
     Inventory = models.IntegerField()
+    description = models.TextField(max_length=500, default='')
 
     class Meta:
         verbose_name = 'Menu'

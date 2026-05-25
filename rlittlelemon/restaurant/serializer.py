@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 from .models import Menu, Booking
 
 
-# Serializers define the API representation.
-# Serializers allow complex data such as querysets and model instances to be converted to native Python datatypes that can then be easily rendered into JSON or XML.
-# Serializers also provide deserialization, allowing parsed data to be converted back into complex types,
+# nverted back into complex types,
 # after first validating the incoming data.
 
 
@@ -14,7 +12,7 @@ from .models import Menu, Booking
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ['id','Title','Price','Inventory'] # includes all fields in the model
+        fields = ['id','Title','Price','Inventory','description'] # includes all fields in the model
 
 
 class BookingSerializer(serializers.ModelSerializer):
@@ -31,4 +29,6 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'groups']  # Include the groups field to show group names
-
+#Serializers define the API representation.
+# Serializers allow complex data such as querysets and model instances to be converted to native Python datatypes that can then be easily rendered into JSON or XML.
+# Serializers also provide deserialization, allowing parsed data to be co
